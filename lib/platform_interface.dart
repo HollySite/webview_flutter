@@ -390,6 +390,7 @@ class WebSettings {
   ///
   /// The `userAgent` parameter must not be null.
   WebSettings({
+    this.backgroundColor,
     this.javascriptMode,
     this.hasNavigationDelegate,
     this.hasProgressTracking,
@@ -398,6 +399,8 @@ class WebSettings {
     this.allowsInlineMediaPlayback,
     required this.userAgent,
   }) : assert(userAgent != null);
+
+  final Color? backgroundColor;
 
   /// The JavaScript execution mode to be used by the webview.
   final JavascriptMode? javascriptMode;

@@ -326,7 +326,12 @@
 - (NSString*)applySettings:(NSDictionary<NSString*, id>*)settings {
   NSMutableArray<NSString*>* unknownKeys = [[NSMutableArray alloc] init];
   for (NSString* key in settings) {
-    if ([key isEqualToString:@"jsMode"]) {
+    if ([key isEqualToString:@"backgroundColor"]) {
+      NSNumber* argbColor = settings[key];
+      UIColor* rgbaColor = [UIColor colorWithRed:(argbColor.intValue >> 16 & 0xff)/255.f green:(argbColor.intValue >> 8 & 0xff)/255.f blue:(argbColor.intValue & 0xff)/255.f alpha:(argbColor.intValue >> 24 & 0xff)/255.f];
+      _webView.opaque = (argbColor.intValue >> 24 & 0xff)/255.f != 0;
+      _webView.backgroundColor = rgbaColor;
+    } else if ([key isEqualToString:@"jsMode"]) {
       NSNumber* mode = settings[key];
       [self updateJsMode:mode];
     } else if ([key isEqualToString:@"hasNavigationDelegate"]) {

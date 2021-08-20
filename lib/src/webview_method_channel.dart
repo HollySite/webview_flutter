@@ -184,7 +184,8 @@ class MethodChannelWebViewPlatform implements WebViewPlatformController {
       map[key] = setting.value;
     }
 
-    _addIfNonNull('jsMode', settings!.javascriptMode?.index);
+    _addIfNonNull('backgroundColor', settings!.backgroundColor?.value);
+    _addIfNonNull('jsMode', settings.javascriptMode?.index);
     _addIfNonNull('hasNavigationDelegate', settings.hasNavigationDelegate);
     _addIfNonNull('hasProgressTracking', settings.hasProgressTracking);
     _addIfNonNull('debuggingEnabled', settings.debuggingEnabled);

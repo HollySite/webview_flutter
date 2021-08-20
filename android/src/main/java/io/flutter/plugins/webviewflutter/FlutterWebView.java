@@ -403,6 +403,12 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
   private void applySettings(Map<String, Object> settings) {
     for (String key : settings.keySet()) {
       switch (key) {
+        case "backgroundColor":
+          Integer color = (Integer) settings.get(key);
+          if (color != null) {
+            webView.setBackgroundColor(color);
+          }
+          break;
         case "jsMode":
           Integer mode = (Integer) settings.get(key);
           if (mode != null) {
